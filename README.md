@@ -65,6 +65,8 @@ Estos índices permiten comparar el comportemiento cardíaco en diferentes condi
 
 ### Plan de acción de la práctica
 
+<img width="616" height="1024" alt="image" src="https://github.com/user-attachments/assets/a164b1e3-2c74-4074-ad77-6aa1367df4f4" />
+
 
 # PARTE B 
 #### c. Pre-procesamiento de la señal 
