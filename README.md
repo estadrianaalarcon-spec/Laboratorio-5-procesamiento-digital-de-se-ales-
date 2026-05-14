@@ -39,8 +39,32 @@ La variabilidad de la frecuencia cardíaca (HRV) corresponde a las varaciones te
 
 para obtener la HRV, primero se identifican los picos R del electrocardiograma y posteriormenete se calculan los intervalos de tiempo entre latidos consecutivos, estos intervalos permiten construir una nueva serie tenmporal conocida como serie R-R, entre los parámetros utilizados en el dominio del tiempo se encunetran.
 
-###### Medida de los intervalos R-R, esta representa el promedio entre latidos consecutivos 
-##### SDNN (Standard Deviation of Normal to Notmal intervals), corresponde a la desviación estandár de los intervalos R-R y refleja la variabilidad de la señal.
+
+- Medida de los intervalos R-R, esta representa el promedio entre latidos consecutivos 
+
+- SDNN (Standard Deviation of Normal to Notmal intervals), corresponde a la desviación estandár de los intervalos R-R y refleja la variabilidad de la señal.
+
+Una HRV elevada generalmente indica buena adaptación autonómica y predominio parasimpático, mientras que una HRV reducuda puede asociarse con fatiga o prediminio simpático.
+
+### Diagrama de Poincaré
+
+el diagrama de Poincaré es una herramienta gráfica utilizada para analizar la dinánica de la variabilidad cardíaca, este método consisten en representar cada intervalo R-R en función del intervalo anterior: RRn+1 vs RRn
+
+<img width="326" height="251" alt="image" src="https://github.com/user-attachments/assets/3f164e03-0f71-46cc-9e83-2622c213c84f" />
+<img width="276" height="282" alt="image" src="https://github.com/user-attachments/assets/6a4a0c65-4ba0-4044-99f3-5267bcec785a" />
+
+
+La distribución de los puntos obtenidos permite observa el comportamiento autonómico del corazón, cuendo existen una alta variabilidad la nube de puntos presenta mayor dispersión, mientras que una menor dispersión indica menor variabilidad y posible predominio simpático.
+
+Con el diagrama de Poincaré pueden calcularse indices cuantitativos como:
+
+- CSI cardiac Sympathetic Index: Relacionado con la actividad simpática
+- CVI Cardiac Vagal Index: asociado con la actividad parasimpática
+
+Estos índices permiten comparar el comportemiento cardíaco en diferentes condiciones fisiológicas.
+
+### Plan de acción de la práctica
+
 
 # PARTE B 
 #### c. Pre-procesamiento de la señal 
