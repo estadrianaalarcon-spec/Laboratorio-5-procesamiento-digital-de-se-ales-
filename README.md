@@ -27,6 +27,20 @@ Un equilibrio adecuado entre ambas ramas del SNA permite matener la homeostasis 
 
 #### Efecto de la actividad simpática y parasimpática en la frecuencia cardíaca.
 
+La frecuencia cardíaca depende directamente de la interacción entre la actividad simpática y parasimpática sobre el nodo sinoauricular del corazón.
+
+Cuando predomina la actividad simpática, se liberan catecolaminas como la adrenalina y la noradrenalina, aumentando la frecuencia cardíaca y disminuyendo el tiempo entre latidos, esto ocurre durante actividades físicas, situaciones de estrés o tareas de mayor atención.
+
+Cuando predomina la actividad parasimpática principalmente mediante la acetilcolina, la frecuencia cardíaca disminuye y los intervalos entre latidos aumentan, este comportamiento es común durante estados como el reposo, los cambios en este balance autonómico pueden analizarse mendiante la variabilidad de la frecuencia cardíaca, ya que una menor variabilidad suele asociarse con predominio simpático, mientras que una mayor variabilidad refleja mayor influencia parasimpática.
+
+### Variabilidad de la frecuencia cardíaca (HRV)
+
+La variabilidad de la frecuencia cardíaca (HRV) corresponde a las varaciones temporales existentes entre intervalos consecutivos R-R obtenidos a partir de una señal electrocardiografica ECG, aunque el corazón mantiene un ritmo constante, el tiempo entre latidos nunca es exactamente igual debido a la regulación continua ejercida por el sistema nervioso autónomo.
+
+para obtener la HRV, primero se identifican los picos R del electrocardiograma y posteriormenete se calculan los intervalos de tiempo entre latidos consecutivos, estos intervalos permiten construir una nueva serie tenmporal conocida como serie R-R, entre los parámetros utilizados en el dominio del tiempo se encunetran.
+
+###### Medida de los intervalos R-R, esta representa el promedio entre latidos consecutivos 
+##### SDNN (Standard Deviation of Normal to Notmal intervals), corresponde a la desviación estandár de los intervalos R-R y refleja la variabilidad de la señal.
 
 # PARTE B 
 #### c. Pre-procesamiento de la señal 
