@@ -14,7 +14,7 @@ En esta práctica se adquirio una señal ECG en condiciones de reposo y lectura 
 
 ### Parte A - Fundamento teórico
 
-#### Sistema nervioso autónomo de la actividad simpática y parasimpática.
+### Sistema nervioso autónomo de la actividad simpática y parasimpática.
 
 El sistema nervioso autonómo (SNA) es el encargado de regulat funciones innvoluntarias del organismo, como la respiración, la presión arterial y la actividad cardíaca, este sistema se divide en dos ramas principales: sistema nervioso simpático y el sistema nervioso parasimpático.
 
