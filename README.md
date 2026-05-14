@@ -1,4 +1,5 @@
 # Laboratorio 5 procesamiento digital de señales HRV
+## Docente: Carolina Corredor 
 #### Adriana Valentina Alarcon Ramirez 5600850
 
 #### Liseth Yulialan Calvijo Mesa 5600862
@@ -25,5 +26,46 @@ El sistema nerviosos parasimpático se relaciona con el estado de reposo y recup
 Un equilibrio adecuado entre ambas ramas del SNA permite matener la homeostasis cardiovascular frente a diferentes estimulos internos y externos.
 
 #### Efecto de la actividad simpática y parasimpática en la frecuencia cardíaca.
+
+
+# PARTE B 
+#### c. Pre-procesamiento de la señal 
+Aplicar los filtros digitales necesarios para eliminar el ruido de la señal, 
+demostrando su diseño. 
+-Diseñar un filtro IIR de acuerdo con los parámetros de la señal, 
+```python
+
+lowcut = 1
+highcut = 35
+orden = 4
+nyquist = fs / 2
+low = lowcut / nyquist
+high = highcut / nyquist
+b, a = butter(orden, [low, high], btype='band')
+ecg_filtrado = filtfilt(b, a, ecg)
+print("Coeficientes b:")
+print(b)
+print("\nCoeficientes a:")
+print(a)
+plt.style.use('default')
+inicio = 0
+fin = 4
+muestra_inicio = int(inicio * fs)
+muestra_fin = int(fin * fs)
+
+
+```
+-Obtener la ecuación en diferencias del filtro, 
+-Implementar el filtro a la señal obtenida asumiendo parámetros iniciales en 0. 
+Dividir la señal filtrada en dos segmentos de señal con duración de 2 minutos cada uno. 
+Identificar los picos R en cada uno de los segmentos, calcular los intervalos 
+R-R y obtener una nueva señal con dicha información. 
+
+
+
+
+
+
+
 
 La frecuencia cardiaca depende directamente de la interacción entre la actividad simpática y parasimpática sobre el nodo sinuauricular del corazón, cuando la actividad simpática predomina se liberan catecolaminas como la adrenalina y la noradrenalina, aumentano la frecuencia cardíaca y disminuyendo el tiempo entre latidos, esto ocurre durante actividades físicas, situaciones de estrés o tareas que impliquen mayor atención 
