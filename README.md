@@ -33,6 +33,11 @@ Un equilibrio adecuado entre ambas ramas del SNA permite matener la homeostasis 
 Aplicar los filtros digitales necesarios para eliminar el ruido de la señal, 
 demostrando su diseño. 
 -Diseñar un filtro IIR de acuerdo con los parámetros de la señal, 
+-Obtener la ecuación en diferencias del filtro, 
+-Implementar el filtro a la señal obtenida asumiendo parámetros iniciales en 0. 
+
+
+
 ```python
 
 lowcut = 1
@@ -55,11 +60,94 @@ muestra_fin = int(fin * fs)
 
 
 ```
--Obtener la ecuación en diferencias del filtro, 
--Implementar el filtro a la señal obtenida asumiendo parámetros iniciales en 0. 
+
+<img width="1070" height="646" alt="image" src="https://github.com/user-attachments/assets/073a87fd-dc23-4c7e-9328-805ed3f257de" />
+
+
+<img width="1072" height="323" alt="image" src="https://github.com/user-attachments/assets/c042771d-8adb-4dd6-b7a6-294c8de6f971" />
+
+
+
 Dividir la señal filtrada en dos segmentos de señal con duración de 2 minutos cada uno. 
 Identificar los picos R en cada uno de los segmentos, calcular los intervalos 
 R-R y obtener una nueva señal con dicha información. 
+
+```python
+# DIVIDIR EN DOS SEGMENTOS
+total_muestras = len(ecg_filtrado)
+mitad = total_muestras // 2
+segmento1 = ecg_filtrado[:mitad]
+segmento2 = ecg_filtrado[mitad:]
+t1 = np.arange(len(segmento1)) / fs
+t2 = np.arange(len(segmento2)) / fs
+# PICOS R
+peaks1, _ = find_peaks(
+    segmento1,
+    distance=0.6*fs,
+    prominence=0.08
+)
+peaks2, _ = find_peaks(
+    segmento2,
+    distance=0.6*fs,
+    prominence=0.08
+)
+# SEGMENTO 1
+plt.figure(figsize=(15,4))
+plt.plot(t1, segmento1)
+plt.plot(
+    peaks1/fs,
+    segmento1[peaks1],
+    'ro'
+)
+plt.title('Picos R - Segmento 1')
+plt.xlabel('Tiempo [s]')
+plt.ylabel('Amplitud')
+plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+plt.minorticks_on()
+plt.show()
+# SEGMENTO 2
+plt.figure(figsize=(15,4))
+plt.plot(t2, segmento2)
+plt.plot(
+    peaks2/fs,
+    segmento2[peaks2],
+    'ro'
+)
+plt.title('Picos R - Segmento 2')
+plt.xlabel('Tiempo [s]')
+plt.ylabel('Amplitud')
+plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+plt.minorticks_on()
+plt.show()
+
+```
+INTERVALO RR SEGMENTO 1
+<img width="1057" height="321" alt="image" src="https://github.com/user-attachments/assets/05434389-1dab-44ee-b381-09c46395e6c6" />
+
+<img width="508" height="73" alt="image" src="https://github.com/user-attachments/assets/123dee59-8147-4ce0-87da-604e1595ba64" />
+
+<img width="827" height="321" alt="image" src="https://github.com/user-attachments/assets/a88b988f-098e-4aea-a5f5-8170b763202c" />
+
+<img width="272" height="35" alt="image" src="https://github.com/user-attachments/assets/f2fde1e6-7bb6-48b0-b822-d99bfd0596cf" />
+
+
+INTERVALO RR SEGMENTO 2
+
+<img width="1065" height="323" alt="image" src="https://github.com/user-attachments/assets/2320b21b-5053-43cb-870e-845d05057bf1" />
+
+<img width="481" height="68" alt="image" src="https://github.com/user-attachments/assets/237c6f77-bcc1-485a-a883-7c326add4b1e" />
+
+<img width="843" height="330" alt="image" src="https://github.com/user-attachments/assets/dfa7ae54-11b5-4c89-9659-fdc7638c2163" />
+
+<img width="272" height="38" alt="image" src="https://github.com/user-attachments/assets/9bda7a3c-56cd-4deb-bffe-d65c3cc16805" />
+
+
+
+
+
+
+
+
 
 
 
