@@ -104,6 +104,12 @@ muestra_fin = int(fin * fs)
 <img width="1070" height="646" alt="image" src="https://github.com/user-attachments/assets/073a87fd-dc23-4c7e-9328-805ed3f257de" />
 
 
+En las gráficas se observa una comparación entre una señal de ECG original y la misma señal después de aplicar un proceso de filtrado. En la gráfica superior, correspondiente al ECG original, se pueden identificar los complejos QRS mediante los picos altos y pronunciados que representan la actividad eléctrica ventricular del corazón. Aunque los latidos se observan de manera relativamente periódica, la señal presenta ruido, pequeñas oscilaciones y variaciones en la línea base, especialmente alrededor de los 3.2 a 3.6 segundos, lo que puede deberse a movimientos, respiración, interferencia de los electrodos o artefactos durante la adquisición de la señal. Estas alteraciones dificultan un análisis preciso de la actividad cardíaca.
+
+En la gráfica inferior se muestra el ECG filtrado, donde se evidencia una mejora importante en la calidad de la señal. Después del filtrado, la línea base queda centrada alrededor de cero y se reducen considerablemente las interferencias y el ruido presentes en la señal original. Además, los complejos QRS se observan más definidos y fáciles de identificar, lo que facilita la detección de los picos R, el cálculo de intervalos RR y el análisis de la frecuencia cardíaca. En general, el filtrado permitió conservar la información importante del ECG mientras eliminó componentes no deseadas, haciendo que la señal sea más adecuada para el procesamiento y análisis biomédico.
+
+
+
 <img width="1072" height="323" alt="image" src="https://github.com/user-attachments/assets/c042771d-8adb-4dd6-b7a6-294c8de6f971" />
 
 
