@@ -168,6 +168,7 @@ plt.show()
 
 ```
 INTERVALO RR SEGMENTO 1
+
 <img width="1057" height="321" alt="image" src="https://github.com/user-attachments/assets/05434389-1dab-44ee-b381-09c46395e6c6" />
 
 <img width="508" height="73" alt="image" src="https://github.com/user-attachments/assets/123dee59-8147-4ce0-87da-604e1595ba64" />
