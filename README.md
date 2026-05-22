@@ -179,6 +179,17 @@ INTERVALO RR SEGMENTO 1
 <img width="272" height="35" alt="image" src="https://github.com/user-attachments/assets/f2fde1e6-7bb6-48b0-b822-d99bfd0596cf" />
 
 
+La figura muestra la detección de los picos R en un segmento de la señal ECG filtrada y el cálculo de los intervalos RR correspondientes. En la gráfica superior, la señal azul representa el ECG procesado, mientras que los puntos rojos indican los picos R identificados automáticamente por el algoritmo. Estos picos corresponden a la máxima amplitud del complejo QRS y permiten determinar cada latido cardíaco. Se observa que la mayoría de los picos fueron detectados correctamente, aunque existen pequeñas variaciones en la amplitud debido al ruido residual de la señal y a posibles artefactos producidos por movimiento o interferencias durante la adquisición.
+
+Los valores mostrados debajo de la gráfica corresponden a los intervalos RR, es decir, el tiempo transcurrido entre un latido y el siguiente. Estos intervalos presentan ligeras variaciones, lo cual es normal en una señal fisiológica real, ya que el ritmo cardíaco no es completamente constante. En la gráfica inferior se representa la variación de los intervalos RR a lo largo del tiempo, observándose algunos aumentos y disminuciones entre latidos consecutivos. Sin embargo, la mayoría de los valores se mantienen dentro de un rango relativamente estable, indicando un comportamiento cardíaco regular.
+
+Finalmente, a partir de los intervalos RR se calculó una frecuencia cardíaca promedio de aproximadamente 72 BPM, valor que se encuentra dentro del rango normal para una persona en estado de reposo. En general, las gráficas permiten evidenciar que el procesamiento aplicado al ECG fue adecuado para detectar los latidos y analizar la dinámica cardíaca del segmento estudiado.
+
+
+
+
+
+
 INTERVALO RR SEGMENTO 2
 
 <img width="1065" height="323" alt="image" src="https://github.com/user-attachments/assets/2320b21b-5053-43cb-870e-845d05057bf1" />
