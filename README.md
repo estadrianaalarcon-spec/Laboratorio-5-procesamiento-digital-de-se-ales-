@@ -497,3 +497,6 @@ El índice CSI se relaciona con la actividad simpática del sistema nervioso aut
 
 
 La frecuencia cardiaca depende directamente de la interacción entre la actividad simpática y parasimpática sobre el nodo sinuauricular del corazón, cuando la actividad simpática predomina se liberan catecolaminas como la adrenalina y la noradrenalina, aumentano la frecuencia cardíaca y disminuyendo el tiempo entre latidos, esto ocurre durante actividades físicas, situaciones de estrés o tareas que impliquen mayor atención 
+
+### Diagrama parte C
+
