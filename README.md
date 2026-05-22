@@ -1,9 +1,10 @@
 # Laboratorio 5 procesamiento digital de señales HRV
+
 ## Docente: Carolina Corredor 
+## Integrantes:
 #### Adriana Valentina Alarcon Ramirez 5600850
-
 #### Liseth Yulialan Calvijo Mesa 5600862
-
+#### Fecha: Mayo 2026
 ## Introducción
 
 La variabilidad de la frecuencia cardíaca (Heart Rate Variability, HRV) es una medida que describe las fluctuaciones temporales emtre latidos consecutivos del corazón, entre intervalos R-R obtenidos a partir de la señal electrocardiográfica (ECG).
