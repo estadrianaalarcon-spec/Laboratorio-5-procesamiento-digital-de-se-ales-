@@ -198,7 +198,7 @@ INTERVALO RR SEGMENTO 2
 
 <img width="843" height="330" alt="image" src="https://github.com/user-attachments/assets/dfa7ae54-11b5-4c89-9659-fdc7638c2163" />
 
-
+<img width="272" height="38" alt="image" src="https://github.com/user-attachments/assets/9bda7a3c-56cd-4deb-bffe-d65c3cc16805" />
 
 
 La figura correspondiente al segmento 2 muestra el comportamiento de la señal ECG cuando la persona se encontraba hablando durante la adquisición de los datos. En la gráfica superior se observa la señal ECG filtrada junto con la detección de los picos R, identificados mediante los puntos rojos. En comparación con el segmento anterior, donde la persona se encontraba en reposo y únicamente respirando, en este caso la señal presenta mayores variaciones y oscilaciones en la amplitud. Esto se debe a que al hablar se generan movimientos musculares y cambios en la respiración que introducen ruido e interferencias en la señal electrocardiográfica.
@@ -207,23 +207,290 @@ Además, se evidencia un aumento notable de amplitud alrededor de los 15 segundo
 
 Los intervalos RR obtenidos presentan una mayor variabilidad respecto al segmento en reposo, lo cual se observa tanto en los valores numéricos como en la gráfica inferior. En esta última, la curva muestra cambios más bruscos y fluctuaciones más marcadas entre un latido y otro. Estas variaciones pueden estar relacionadas con la actividad muscular, el patrón respiratorio y las interferencias generadas mientras la persona hablaba durante la adquisición de la señal.
 
-<img width="272" height="38" alt="image" src="https://github.com/user-attachments/assets/9bda7a3c-56cd-4deb-bffe-d65c3cc16805" />
 
 
 
-d. Análisis de la HRV en el dominio del tiempo 
+
+## d. Análisis de la HRV en el dominio del tiempo 
 Comparar los valores de los parámetros básicos de la HRV en el dominio del tiempo, como la media de los intervalos R-R y su desviación estándar, entre çambos segmentos de señal ECG. 
 
 
 
+```python
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# ======================================
+# HRV EN DOMINIO DEL TIEMPO
+# ======================================
+
+def hrv_time_domain(rr):
+
+    mean_rr = np.mean(rr)
+
+    sdnn = np.std(rr, ddof=1)
+
+    rmssd = np.sqrt(np.mean(np.diff(rr)**2))
+
+    return mean_rr, sdnn, rmssd
+
+mean1, sdnn1, rmssd1 = hrv_time_domain(rr1)
+
+mean2, sdnn2, rmssd2 = hrv_time_domain(rr2)
+
+# TABLA
+
+tabla = pd.DataFrame({
+
+    "Métrica": [
+        "Media RR (s)",
+        "SDNN (s)",
+        "RMSSD (s)"
+    ],
+
+    "Segmento 1": [
+        mean1,
+        sdnn1,
+        rmssd1
+    ],
+
+    "Segmento 2": [
+        mean2,
+        sdnn2,
+        rmssd2
+    ]
+
+})
+
+print(tabla)
+
+# GRAFICA
+
+metricas = ["Media RR", "SDNN", "RMSSD"]
+
+seg1 = [mean1, sdnn1, rmssd1]
+seg2 = [mean2, sdnn2, rmssd2]
+
+x = np.arange(len(metricas))
+
+ancho = 0.35
+
+plt.figure(figsize=(8,5))
+
+plt.bar(
+    x - ancho/2,
+    seg1,
+    width=ancho,
+    label='Segmento 1'
+)
+
+plt.bar(
+    x + ancho/2,
+    seg2,
+    width=ancho,
+    label='Segmento 2'
+)
+
+plt.xticks(x, metricas)
+
+plt.ylabel('Valor [s]')
+
+plt.title('HRV en Dominio del Tiempo')
+
+plt.legend()
+
+plt.grid(True, linestyle='--', linewidth=0.5)
+
+plt.show()
+
+```
+
+<img width="594" height="435" alt="image" src="https://github.com/user-attachments/assets/4fda7db1-4305-4b94-9430-869b2a61cf12" />
+
+
+Esta gráfica muestra un análisis de la variabilidad de la frecuencia cardíaca (HRV) en el dominio del tiempo para dos segmentos diferentes del ECG. El Segmento 1 corresponde al estado de reposo, mientras que el Segmento 2 corresponde al momento en que la persona estaba hablando. Las métricas utilizadas fueron la Media RR, SDNN y RMSSD.
+
+La Media RR representa el tiempo promedio entre latidos cardíacos. En el Segmento 2 el valor es ligeramente mayor, lo que indica pequeñas variaciones en el ritmo cardíaco mientras la persona hablaba. La métrica SDNN mide la variabilidad general de los intervalos RR y en el Segmento 2 presenta un valor más alto, evidenciando una mayor variabilidad cardíaca debido a los cambios respiratorios y musculares generados por el habla.
+
+Por otro lado, el RMSSD evalúa las variaciones rápidas entre latidos consecutivos y está relacionado con la actividad del sistema nervioso parasimpático. En la gráfica se observa que el Segmento 2 tiene un RMSSD considerablemente mayor que el Segmento 1, lo que indica que hablar produjo cambios más notorios en la dinámica cardíaca y aumentó la variabilidad de corto plazo.
+
+
+
+## e. Construcción del diagrama de Poincaré 
+Obtener el diagrama de Poincaré para cada segmento de señal ECG y comparar la dispersión de la nube de puntos que se obtuvo para cada caso.   
+Calcular los valores de los índices tanto de actividad vagal (CVI) como de actividad simpática (CSI) que se obtienen a partir del diagrama de Poincaré. 
+
+
+
+```python
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def poincare_indices(rr):
+
+    rr = np.asarray(rr)
+
+    rr_n = rr[:-1]
+    rr_n1 = rr[1:]
+
+    diff_rr = rr_n1 - rr_n
+
+    sd1 = np.sqrt(0.5) * np.std(diff_rr, ddof=1)
+
+    sd2 = np.sqrt(
+        2 * np.std(rr, ddof=1)**2
+        - 0.5 * np.std(diff_rr, ddof=1)**2
+    )
+
+    cvi = np.log10(sd1 * sd2)
+
+    csi = sd2 / sd1
+
+    return rr_n, rr_n1, sd1, sd2, cvi, csi
+
+rr1_n, rr1_n1, sd1_1, sd2_1, cvi_1, csi_1 = poincare_indices(rr1)
+
+
+rr2_n, rr2_n1, sd1_2, sd2_2, cvi_2, csi_2 = poincare_indices(rr2)
+
+
+print("Segmento 1")
+
+print("SD1 =", sd1_1, "s")
+print("SD2 =", sd2_1, "s")
+print("CVI =", cvi_1)
+print("CSI =", csi_1)
+
+print("\nSegmento 2")
+
+print("SD1 =", sd1_2, "s")
+print("SD2 =", sd2_2, "s")
+print("CVI =", cvi_2)
+print("CSI =", csi_2)
+
+# ============================================
+# POINCARE SEGMENTO 1
+# ============================================
+
+plt.figure(figsize=(6,6))
+
+plt.scatter(
+    rr1_n,
+    rr1_n1,
+    alpha=0.6
+)
+
+plt.plot(
+    [min(rr1), max(rr1)],
+    [min(rr1), max(rr1)],
+    'r--',
+    label='y=x'
+)
+
+plt.xlabel("RRₙ (s)")
+plt.ylabel("RRₙ₊₁ (s)")
+
+plt.title("Diagrama de Poincaré - Segmento 1")
+
+plt.grid(True, linestyle='--', linewidth=0.5)
+
+plt.axis('equal')
+
+plt.legend()
+
+plt.tight_layout()
+
+plt.show()
+
+# ============================================
+# POINCARE SEGMENTO 2
+# ============================================
+
+plt.figure(figsize=(6,6))
+
+plt.scatter(
+    rr2_n,
+    rr2_n1,
+    alpha=0.6
+)
+
+plt.plot(
+    [min(rr2), max(rr2)],
+    [min(rr2), max(rr2)],
+    'r--',
+    label='y=x'
+)
+
+plt.xlabel("RRₙ (s)")
+plt.ylabel("RRₙ₊₁ (s)")
+
+plt.title("Diagrama de Poincaré - Segmento 2")
+
+plt.grid(True, linestyle='--', linewidth=0.5)
+
+plt.axis('equal')
+
+plt.legend()
+
+plt.tight_layout()
+
+plt.show()
+
+tabla_poincare = pd.DataFrame({
+
+    "Métrica": [
+        "SD1 (s)",
+        "SD2 (s)",
+        "CVI",
+        "CSI"
+    ],
+
+    "Segmento 1": [
+        sd1_1,
+        sd2_1,
+        cvi_1,
+        csi_1
+    ],
+
+    "Segmento 2": [
+        sd1_2,
+        sd2_2,
+        cvi_2,
+        csi_2
+    ]
+
+})
+
+print("\nTabla índices Poincaré")
+
+print(tabla_poincare)
+
+```
 
 
 
 
+<img width="515" height="659" alt="image" src="https://github.com/user-attachments/assets/869f784a-c204-4b68-a7b8-f36bd080bcc0" />
+<img width="519" height="496" alt="image" src="https://github.com/user-attachments/assets/ccc54ce2-d7a9-41f1-a6c4-7b54ad356576" />
 
 
+Estas gráficas corresponden al análisis de variabilidad cardíaca mediante el diagrama de Poincaré, una herramienta utilizada para evaluar cómo cambian los intervalos RR entre latidos consecutivos. En el gráfico, cada punto representa la relación entre un intervalo RR actual (RRn) y el siguiente intervalo RR (RRn+1). La línea roja punteada corresponde a la recta y=x, que sirve como referencia para observar qué tan similares son los intervalos consecutivos.
+
+En el Segmento 1, correspondiente al estado de reposo, la mayoría de los puntos se concentran cerca de la línea diagonal, lo que indica que los intervalos RR consecutivos son relativamente similares y que el ritmo cardíaco es más estable. Sin embargo, también se observan algunos puntos más alejados de la diagonal, los cuales representan variaciones mayores entre ciertos latidos.
+
+Los parámetros SD1 y SD2 permiten cuantificar esta dispersión. El valor SD1 representa la variabilidad de corto plazo entre latidos consecutivos, mientras que SD2 representa la variabilidad de largo plazo de la señal. En este caso, SD2 es mayor que SD1, indicando que existen variaciones más importantes en la dinámica general del ritmo cardíaco que en los cambios instantáneos entre latidos consecutivos.
+
+El índice CSI se relaciona con la actividad simpática del sistema nervioso autónomo y refleja qué tan alargada es la distribución de los puntos, mientras que el índice CVI está asociado a la variabilidad cardíaca global. Al comparar ambos segmentos, se observa que en el Segmento 2, donde la persona estaba hablando, el valor de SD1 aumenta, indicando una mayor variabilidad de corto plazo causada por la actividad muscular y respiratoria asociada al habla. Además, el CSI disminuye respecto al Segmento 1, lo que evidencia cambios en la dinámica cardíaca durante la conversación
 
 
+## Conclusiones
+
+-El procesamiento y filtrado de la señal ECG permitió reducir el ruido y las interferencias presentes durante la adquisición, facilitando la detección de los picos R y el cálculo de los intervalos RR para el análisis de la actividad cardíaca.
+-Se observó que el estado de reposo presentó una señal más estable y con menor variabilidad cardíaca, mientras que durante el habla aumentaron las fluctuaciones en los intervalos RR debido a los movimientos musculares y cambios respiratorios asociados a esta actividad.
+-Las métricas de HRV y los diagramas de Poincaré evidenciaron una mayor variabilidad cardíaca en el segmento donde la persona estaba hablando, demostrando que las actividades fisiológicas y el movimiento influyen directamente en el comportamiento de la señal electrocardiográfica.
 
 
 
