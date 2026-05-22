@@ -498,5 +498,24 @@ El índice CSI se relaciona con la actividad simpática del sistema nervioso aut
 
 La frecuencia cardiaca depende directamente de la interacción entre la actividad simpática y parasimpática sobre el nodo sinuauricular del corazón, cuando la actividad simpática predomina se liberan catecolaminas como la adrenalina y la noradrenalina, aumentano la frecuencia cardíaca y disminuyendo el tiempo entre latidos, esto ocurre durante actividades físicas, situaciones de estrés o tareas que impliquen mayor atención 
 
-### Diagrama parte C
+### Diagrama parte B
+
+Procesamiento de la señal, filtrado, detección de picos R, Cálculo de inntervalos RR y frecuencias cardiacas.
+
+<img width="480" height="1600" alt="image" src="https://github.com/user-attachments/assets/41d18b17-a269-4fda-9a0d-b43f9ef59edb" />
+
+### Diagrama parte D
+
+HVR en el tiempo 
+
+<img width="203" height="562" alt="image" src="https://github.com/user-attachments/assets/f01c708b-060e-4640-8c1a-75234d8751ae" />
+
+## Diagrama parte E
+
+Indices de Poincaré
+
+<img width="231" height="581" alt="image" src="https://github.com/user-attachments/assets/0e3bd0d7-2e01-4371-be95-4927eab5751c" />
+
+
+
 
