@@ -198,6 +198,15 @@ INTERVALO RR SEGMENTO 2
 
 <img width="843" height="330" alt="image" src="https://github.com/user-attachments/assets/dfa7ae54-11b5-4c89-9659-fdc7638c2163" />
 
+
+
+
+La figura correspondiente al segmento 2 muestra el comportamiento de la señal ECG cuando la persona se encontraba hablando durante la adquisición de los datos. En la gráfica superior se observa la señal ECG filtrada junto con la detección de los picos R, identificados mediante los puntos rojos. En comparación con el segmento anterior, donde la persona se encontraba en reposo y únicamente respirando, en este caso la señal presenta mayores variaciones y oscilaciones en la amplitud. Esto se debe a que al hablar se generan movimientos musculares y cambios en la respiración que introducen ruido e interferencias en la señal electrocardiográfica.
+
+Además, se evidencia un aumento notable de amplitud alrededor de los 15 segundos y varias perturbaciones posteriores, las cuales pueden asociarse a artefactos producidos por el movimiento durante el habla. A pesar de estas alteraciones, el algoritmo logró detectar correctamente la mayoría de los picos R, permitiendo calcular los intervalos RR entre cada latido cardíaco.
+
+Los intervalos RR obtenidos presentan una mayor variabilidad respecto al segmento en reposo, lo cual se observa tanto en los valores numéricos como en la gráfica inferior. En esta última, la curva muestra cambios más bruscos y fluctuaciones más marcadas entre un latido y otro. Estas variaciones pueden estar relacionadas con la actividad muscular, el patrón respiratorio y las interferencias generadas mientras la persona hablaba durante la adquisición de la señal.
+
 <img width="272" height="38" alt="image" src="https://github.com/user-attachments/assets/9bda7a3c-56cd-4deb-bffe-d65c3cc16805" />
 
 
