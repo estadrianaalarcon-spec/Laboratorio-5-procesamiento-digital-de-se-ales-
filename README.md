@@ -211,6 +211,11 @@ Los intervalos RR obtenidos presentan una mayor variabilidad respecto al segment
 
 
 
+d. Análisis de la HRV en el dominio del tiempo 
+Comparar los valores de los parámetros básicos de la HRV en el dominio del tiempo, como la media de los intervalos R-R y su desviación estándar, entre çambos segmentos de señal ECG. 
+
+
+
 
 
 
